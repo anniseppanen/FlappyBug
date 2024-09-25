@@ -4,7 +4,7 @@ import o1.*
 
 class Game:
   val bug = Bug(BugStartingPos)
-  val obstacle = Obstacle(ObstacleRadius, ObstacleStartingPos)
+  val obstacle = Obstacle(ObstacleRadius)
   
   def timePasses() = 
     bug.fall()
