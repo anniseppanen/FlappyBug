@@ -18,5 +18,8 @@ class Bug(private var currentPos: Pos):
     
   private def move(y: Double) =
     currentPos = (currentPos.addY(y)).clampY(0, 350)
+    
+  def isInBounds =
+    currentPos.y > 0 && currentPos.y < Ground
 
   override def toString = s"center at $pos, radius $radius"

@@ -8,6 +8,7 @@ val BugRadius = 15
 val ViewWidth = 1000
 val ViewHeight = 400
 val GroundDepth = 50
+val Ground = 350
 val BugStartingPos = o1.world.Pos(100.0,40.0)
 val ObstacleStartingPos = o1.world.Pos(1000.0,100.0)
 val ObstacleRadius = 70

@@ -14,6 +14,6 @@ class Game:
     bug.flap(Flap)
     
   def isLost =
-    obstacle.touches(bug)
+    obstacle.touches(bug) || !bug.isInBounds
   
 end Game
