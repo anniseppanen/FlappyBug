@@ -24,9 +24,11 @@ object flappyView extends View("FlappyBug"):
   var background = scenery()
   
   def makePic =
-    val rock = makeRockPic(game.obstacle)
-    val bugPlaced = background.place(bugPic, game.bug.pos)
-    bugPlaced.place(rock, game.obstacle.pos)
+    var rocksPlaced = background
+    for obstacle <- game.obstacles do
+      val rock = makeRockPic(obstacle)
+      rocksPlaced = rocksPlaced.place(rock, obstacle.pos)
+    rocksPlaced.place(bugPic, game.bug.pos)
 
   override def onKeyDown(key: Key) =
     if key == Key.Space then game.activateBug()

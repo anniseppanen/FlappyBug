@@ -4,16 +4,21 @@ import o1.*
 
 class Game:
   val bug = Bug(BugStartingPos)
-  val obstacle = Obstacle(ObstacleRadius)
-  
+  val obstacles = Vector(Obstacle(70), Obstacle(30), Obstacle(20))
+
   def timePasses() = 
     bug.fall()
-    obstacle.approach()
+    for obstacle <- obstacles do
+      obstacle.approach()
     
   def activateBug() =
     bug.flap(Flap)
     
   def isLost =
-    obstacle.touches(bug) || !bug.isInBounds
-  
+    var obstacleTouches = false
+    for obstacle <- obstacles do
+        if obstacle.touches(bug) then
+          obstacleTouches = true
+    !bug.isInBounds || obstacleTouches
+    
 end Game
