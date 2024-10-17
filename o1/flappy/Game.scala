@@ -8,17 +8,13 @@ class Game:
 
   def timePasses() = 
     bug.fall()
-    for obstacle <- obstacles do
-      obstacle.approach()
+    obstacles.foreach(_.approach())
     
   def activateBug() =
     bug.flap(Flap)
     
   def isLost =
-    var obstacleTouches = false
-    for obstacle <- obstacles do
-        if obstacle.touches(bug) then
-          obstacleTouches = true
+    val obstacleTouches = obstacles.exists(_.touches(bug))
     !bug.isInBounds || obstacleTouches
     
 end Game

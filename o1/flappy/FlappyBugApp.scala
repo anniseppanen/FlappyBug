@@ -24,10 +24,8 @@ object flappyView extends View("FlappyBug"):
   var background = scenery()
   
   def makePic =
-    var rocksPlaced = background
-    for obstacle <- game.obstacles do
-      val rock = makeRockPic(obstacle)
-      rocksPlaced = rocksPlaced.place(rock, obstacle.pos)
+    val obstacles = game.obstacles
+    val rocksPlaced = obstacles.foldLeft(background)((background, obstacle) => background.place(makeRockPic(obstacle), obstacle.pos))
     rocksPlaced.place(bugPic, game.bug.pos)
 
   override def onKeyDown(key: Key) =
